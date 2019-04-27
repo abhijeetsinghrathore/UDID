@@ -1,25 +1,23 @@
 package com.example.abhijeetsingh.udid;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
-public class OfficialProfile extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class OfficialProfile extends AppCompatActivity {
 
-    FirebaseAuth firebaseAuth;
+
+    Button scanButton;
+    TextView scannedText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,97 +25,51 @@ public class OfficialProfile extends AppCompatActivity
         setContentView(R.layout.activity_official_profile);
 
 
+        scanButton=(Button)findViewById(R.id.ScanButtonID);
+        scannedText=(TextView)findViewById(R.id.ScannedTextID);
 
-        firebaseAuth= FirebaseAuth.getInstance();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        final Activity activity=this;
 
 
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IntentIntegrator integrator=new IntentIntegrator(activity);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(true);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.official_profile, menu);
-        return true;
-    }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        IntentResult result=IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(result!=null)
+        {
+            if(result.getContents()==null)
+            {
+                Toast.makeText(this,"You cancelled the scanning",Toast.LENGTH_SHORT).show();
+
+            }
+            else
+            {
+                Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
+                scannedText.setText(result.getContents());
+
+            }
         }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-
-        Fragment fragment=null;
-
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_scan) {
-
-            fragment=new OfficialProfile_ScanCodeFragment();
-
-
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_logount) {
-
-            firebaseAuth.signOut();
-            finish();
-            Intent i=new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(i);
+        else
+        {
+            super.onActivityResult(requestCode, resultCode, data);
 
         }
-
-        Toast.makeText(getApplicationContext(),item.getTitle(), Toast.LENGTH_SHORT).show();
-        if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.content_official_profileID, fragment); // replace a Fragment with Frame Layout
-            transaction.commit(); // commit the changes
-        }
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

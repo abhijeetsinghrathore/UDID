@@ -85,7 +85,7 @@ public class UserRegistration extends AppCompatActivity {
                         {
                             progressDialog.dismiss();
                             finish();
-                            Intent i=new Intent(getApplicationContext(),Profile.class);
+                            Intent i=new Intent(getApplicationContext(),UserRegistration_FillDetails.class);
                             startActivity(i);
                             Toast.makeText(UserRegistration.this,"registration successful",Toast.LENGTH_SHORT).show();
 

@@ -26,10 +26,9 @@
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".OfficialSignIn" />
-        <activity
-            android:name=".OfficialProfile"
-            android:label="@string/title_activity_official_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".OfficialProfile" />
+        <activity android:name=".UserRegistration_FillDetails" />
+        <activity android:name=".UserRegistration_UploadDocuments"></activity>
     </application>
 
 </manifest>

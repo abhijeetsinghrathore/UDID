@@ -3,6 +3,7 @@ package com.example.abhijeetsingh.udid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,13 +11,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseAuth firebaseAuth;
+    TextView welcomeText;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,15 @@ public class Profile extends AppCompatActivity
 
 
         firebaseAuth=FirebaseAuth.getInstance();
+        user=firebaseAuth.getCurrentUser();
+
+        View v=getLayoutInflater().inflate(R.layout.content_profile,null);
+        welcomeText=(TextView)v.findViewById(R.id.WelcomeTextID);
+        welcomeText.setText("Welcome "+user.getEmail());
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -86,13 +102,28 @@ public class Profile extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        android.support.v4.app.Fragment frag=null;
+
+
+
+
+        if(id==R.id.nav_home)
+        {
+
+        }
+
+        if (id == R.id.nav_filldetails) {
             // Handle the camera action
+
+            frag=new Profile_FillDetailsFragment();
+
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_uploaddocuments) {
+            frag=new Profile_UploadDocuments();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.GenerateQR) {
+            frag=new Profile_GenerateQR();
 
         } else if (id == R.id.nav_share) {
 
@@ -103,6 +134,14 @@ public class Profile extends AppCompatActivity
             startActivity(i);
 
 
+        }
+
+
+        Toast.makeText(getApplicationContext(),item.getTitle(), Toast.LENGTH_SHORT).show();
+        if (frag != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.content_profileID, frag); // replace a Fragment with Frame Layout
+            transaction.commit(); // commit the changes
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

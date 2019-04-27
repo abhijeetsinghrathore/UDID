@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile_FillDetailsFragment">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="First Name"
+           android:id="@+id/firstnameID"/>
+
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="Last Name"
+           android:id="@+id/lastnameID"/>
+       <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/dobID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="3"
+            android:drawablePadding="3dp"
+            android:hint="DD/MM/YYYY"
+            android:inputType="date" />
+
+        <ImageView
+            android:id="@+id/calendarID"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@+id/dob"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/calendar" />
+
+
+       </LinearLayout>
+
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Save"
+           android:layout_gravity="center_horizontal"
+           android:background="@drawable/rounded_button"
+           android:layout_marginTop="50dp"
+           android:id="@+id/saveButtonID"/>
+
+
+
+
+
+
+
+       </LinearLayout>
+
+
+
+
+</FrameLayout>

@@ -4,22 +4,37 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Home"
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+
+            />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_filldetails"
+            android:icon="@drawable/ic_create_black_24dp"
+            android:title="Fill details" />
+        <item
+            android:id="@+id/nav_viewdetails"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="View Deatils" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_uploaddocuments"
+            android:icon="@drawable/ic_file_upload_black_24dp"
+            android:title="Upload Documents" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_viewdocumnets"
+            android:icon="@drawable/ic_insert_drive_file_black_24dp"
+            android:title="View Documents" />
+        <item
+            android:id="@+id/GenerateQR"
+            android:title="Generate QR code"
+            android:icon="@drawable/ic_qr"/>
+        <item
+            android:id="@+id/ViewQR"
+            android:title="View QR code"
+            android:icon="@drawable/ic_qr"/>
     </group>
 
     <item android:title="Communicate">
