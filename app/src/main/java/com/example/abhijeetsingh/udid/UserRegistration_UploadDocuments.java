@@ -230,6 +230,7 @@ public class UserRegistration_UploadDocuments extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(UserRegistration_UploadDocuments.this,Profile.class);
                 startActivity(i);
+                finish();
             }
         });
     }

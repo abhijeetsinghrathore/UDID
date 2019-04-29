@@ -5,26 +5,15 @@
 
     <group android:checkableBehavior="single">
 
-        <item
-            android:title="Home"
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
 
-            />
-        <item
-            android:id="@+id/nav_filldetails"
-            android:icon="@drawable/ic_create_black_24dp"
-            android:title="Fill details" />
+
         <item
             android:id="@+id/nav_viewdetails"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="View Deatils" />
+            android:title="View Details" />
+
         <item
-            android:id="@+id/nav_uploaddocuments"
-            android:icon="@drawable/ic_file_upload_black_24dp"
-            android:title="Upload Documents" />
-        <item
-            android:id="@+id/nav_viewdocumnets"
+            android:id="@+id/nav_viewdocuments"
             android:icon="@drawable/ic_insert_drive_file_black_24dp"
             android:title="View Documents" />
         <item

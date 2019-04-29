@@ -72,6 +72,7 @@ public class UserRegistration_FillDetails extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(UserRegistration_FillDetails.this,UserRegistration_UploadDocuments.class);
                 startActivity(i);
+                finish();
             }
         });
 

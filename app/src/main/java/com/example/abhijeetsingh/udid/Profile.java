@@ -105,29 +105,17 @@ public class Profile extends AppCompatActivity
         android.support.v4.app.Fragment frag=null;
 
 
+        if (id == R.id.nav_viewdetails) {
+            frag=new Profile_ViewDetailsFragment();
 
 
-        if(id==R.id.nav_home)
-        {
+        } else if (id == R.id.nav_viewdocuments) {
 
-        }
-
-        if (id == R.id.nav_filldetails) {
-            // Handle the camera action
-
-            frag=new Profile_FillDetailsFragment();
-
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_uploaddocuments) {
-            frag=new Profile_UploadDocuments();
 
         } else if (id == R.id.GenerateQR) {
             frag=new Profile_GenerateQR();
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_logount) {
+        }  else if (id == R.id.nav_logount) {
             firebaseAuth.signOut();
             finish();
             Intent i=new Intent(getApplicationContext(),MainActivity.class);
