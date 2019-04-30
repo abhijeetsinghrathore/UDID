@@ -3,6 +3,7 @@ package com.example.abhijeetsingh.udid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -17,7 +23,12 @@ public class OfficialProfile extends AppCompatActivity {
 
 
     Button scanButton;
-    TextView scannedText;
+    String UID;
+
+    DatabaseReference reference;
+
+
+    TextView firstName,lastName,dateOfBirth,state,city,address,contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +37,15 @@ public class OfficialProfile extends AppCompatActivity {
 
 
         scanButton=(Button)findViewById(R.id.ScanButtonID);
-        scannedText=(TextView)findViewById(R.id.ScannedTextID);
+
+        firstName=(TextView)findViewById(R.id.getfirstnameID);
+        lastName=(TextView)findViewById(R.id.getlastnameID);
+        dateOfBirth=(TextView)findViewById(R.id.getdobID);
+        state=(TextView)findViewById(R.id.getstateID);
+        city=(TextView)findViewById(R.id.getcityID);
+        address=(TextView)findViewById(R.id.getaddressID);
+        contact=(TextView)findViewById(R.id.getcontactID);
+
 
         final Activity activity=this;
 
@@ -62,7 +81,39 @@ public class OfficialProfile extends AppCompatActivity {
             else
             {
                 Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
-                scannedText.setText(result.getContents());
+                UID=result.getContents();
+                reference= FirebaseDatabase.getInstance().getReference().child(UID);
+
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String firstNameText=dataSnapshot.child("mfirstname").getValue().toString();
+                        String lastNameText=dataSnapshot.child("mlastname").getValue().toString();
+                        String dateOfBirthText=dataSnapshot.child("mdob").getValue().toString();
+                        String stateText=dataSnapshot.child("mState").getValue().toString();
+                        String cityText=dataSnapshot.child("mCity").getValue().toString();
+                        String addressText=dataSnapshot.child("maddress").getValue().toString();
+                        String contactText=dataSnapshot.child("mPhone").getValue().toString();
+
+
+                        firstName.setText(firstNameText);
+                        lastName.setText(lastNameText);
+                        dateOfBirth.setText(dateOfBirthText);
+                        state.setText(stateText);
+                        city.setText(cityText);
+                        address.setText(addressText);
+                        contact.setText(contactText);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
 
             }
         }
