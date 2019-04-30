@@ -75,6 +75,7 @@ public class UserRegistration_UploadDocuments extends AppCompatActivity {
 
 
 
+
         choseProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

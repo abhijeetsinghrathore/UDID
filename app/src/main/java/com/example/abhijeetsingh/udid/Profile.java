@@ -110,6 +110,7 @@ public class Profile extends AppCompatActivity
 
 
         } else if (id == R.id.nav_viewdocuments) {
+            frag=new Profile_ViewDocumentsFragment();
 
 
         } else if (id == R.id.GenerateQR) {
