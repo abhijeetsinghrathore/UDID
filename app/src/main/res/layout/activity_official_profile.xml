@@ -24,6 +24,52 @@
             android:id="@+id/ScanButtonID"/>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Profile Image"
+                android:textSize="15sp"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorAccent"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/ProfileImageID"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Certificate"
+                android:textSize="15sp"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@color/colorAccent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/CertificateImageID"/>
+
+
+
+
+
+
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

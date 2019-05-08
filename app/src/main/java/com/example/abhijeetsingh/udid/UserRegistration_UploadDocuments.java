@@ -116,9 +116,9 @@ public class UserRegistration_UploadDocuments extends AppCompatActivity {
                     final ProgressDialog progressDialog=new ProgressDialog(UserRegistration_UploadDocuments.this);
                     progressDialog.setTitle("Uploading...");
                     progressDialog.show();
-                    String  email=user.getEmail();
+                    String  UID=user.getUid();
 
-                    StorageReference profileRef = storageReference.child("images/"+email+"Profile.jpg");
+                    StorageReference profileRef = storageReference.child("images/"+UID+"Profile.jpg");
 
                     profileRef.putFile(PROFILEfilepath)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -168,9 +168,9 @@ public class UserRegistration_UploadDocuments extends AppCompatActivity {
                     final ProgressDialog progressDialog=new ProgressDialog(UserRegistration_UploadDocuments.this);
                     progressDialog.setTitle("Uploading...");
                     progressDialog.show();
-                    String  email=user.getEmail();
+                    String  UID=user.getUid();
 
-                    StorageReference documentsRef = storageReference.child("Documents/"+email+"CERTI.jpg");
+                    StorageReference documentsRef = storageReference.child("Documents/"+UID+"CERTI.jpg");
 
                     documentsRef.putFile(CERTIFICATEfilepath)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

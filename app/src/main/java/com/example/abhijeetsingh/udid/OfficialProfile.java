@@ -18,6 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class OfficialProfile extends AppCompatActivity {
 
@@ -27,6 +31,13 @@ public class OfficialProfile extends AppCompatActivity {
 
     DatabaseReference reference;
 
+    StorageReference storageReference;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+
+
+    android.widget.ImageView profileImage,certificateImage;
+
 
     TextView firstName,lastName,dateOfBirth,state,city,address,contact;
 
@@ -34,6 +45,9 @@ public class OfficialProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_official_profile);
+
+
+        storageReference=FirebaseStorage.getInstance().getReference();
 
 
         scanButton=(Button)findViewById(R.id.ScanButtonID);
@@ -45,6 +59,10 @@ public class OfficialProfile extends AppCompatActivity {
         city=(TextView)findViewById(R.id.getcityID);
         address=(TextView)findViewById(R.id.getaddressID);
         contact=(TextView)findViewById(R.id.getcontactID);
+
+
+        profileImage=(android.widget.ImageView)findViewById(R.id.ProfileImageID);
+        certificateImage=(android.widget.ImageView)findViewById(R.id.CertificateImageID);
 
 
         final Activity activity=this;
@@ -83,6 +101,13 @@ public class OfficialProfile extends AppCompatActivity {
                 Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
                 UID=result.getContents();
                 reference= FirebaseDatabase.getInstance().getReference().child(UID);
+
+                StorageReference profileRef = storageReference.child("images/"+UID+"Profile.jpg");
+                StorageReference documentsRef = storageReference.child("Documents/"+UID+"CERTI.jpg");
+
+                 GlideApp.with(OfficialProfile.this).load(profileRef).into(profileImage);
+                 GlideApp.with(OfficialProfile.this).load(documentsRef).into(certificateImage);
+
 
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override

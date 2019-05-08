@@ -36,7 +36,7 @@ public class Profile_ViewDocumentsFragment extends Fragment {
         storageReference= FirebaseStorage.getInstance().getReference();
         user=firebaseAuth.getCurrentUser();
 
-        String email=user.getEmail();
+        String UID=user.getUid();
 
 
         profileImage=(ImageView)v.findViewById(R.id.ProfileImageID);
@@ -45,8 +45,8 @@ public class Profile_ViewDocumentsFragment extends Fragment {
 
 
 
-        StorageReference profileRef = storageReference.child("images/"+email+"Profile.jpg");
-        StorageReference documentsRef = storageReference.child("Documents/"+email+"CERTI.jpg");
+        StorageReference profileRef = storageReference.child("images/"+UID+"Profile.jpg");
+        StorageReference documentsRef = storageReference.child("Documents/"+UID+"CERTI.jpg");
 
 
         GlideApp.with(v.getContext()).load(profileRef).into(profileImage);
