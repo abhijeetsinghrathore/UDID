@@ -10,12 +10,13 @@ public class USER {
     public String maddress;
 
     public String mPhone;
+    public String mToken;
 
 
     public USER()
     {}
 
-    public USER(String firstname,String lastname,String dob,String state,String city, String address,String phone)
+    public USER(String firstname,String lastname,String dob,String state,String city, String address,String phone,String token)
     {
         this.mfirstname=firstname;
         this.mlastname=lastname;
@@ -24,5 +25,6 @@ public class USER {
         this.maddress=address;
         this.mdob=dob;
         this.mPhone=phone;
+        this.mToken=token;
     }
 }

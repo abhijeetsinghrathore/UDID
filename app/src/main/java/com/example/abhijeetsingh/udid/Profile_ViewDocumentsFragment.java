@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -50,8 +49,9 @@ public class Profile_ViewDocumentsFragment extends Fragment {
         StorageReference documentsRef = storageReference.child("Documents/"+email+"CERTI.jpg");
 
 
-        Glide.with(v.getContext()).load(profileRef).into(profileImage);
-        Glide.with(Profile_ViewDocumentsFragment.this).load(documentsRef).into(certificateImage);
+        GlideApp.with(v.getContext()).load(profileRef).into(profileImage);
+        GlideApp.with(Profile_ViewDocumentsFragment.this).load(documentsRef).into(certificateImage);
+
 
 
 

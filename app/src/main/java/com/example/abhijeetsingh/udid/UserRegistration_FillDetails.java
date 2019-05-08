@@ -28,7 +28,7 @@ public class UserRegistration_FillDetails extends AppCompatActivity {
 
     EditText firstname,lastname,dateofbirth,state,city,address,phone;
 
-    String firstnametext,lastnametext,dateofbirthtext,statetext,citytext,addresstext,phonetext;
+    String firstnametext,lastnametext,dateofbirthtext,statetext,citytext,addresstext,phonetext,token;
 
 
     FirebaseAuth firebaseAuth;
@@ -116,7 +116,9 @@ public class UserRegistration_FillDetails extends AppCompatActivity {
                 addresstext=address.getText().toString().trim();
                 phonetext=phone.getText().toString().trim();
 
-                USER user=new USER(firstnametext,lastnametext,dateofbirthtext,statetext,citytext,addresstext,phonetext);
+                token=(SharedPrefManager.getInstance(UserRegistration_FillDetails.this).getToken());
+
+                USER user=new USER(firstnametext,lastnametext,dateofbirthtext,statetext,citytext,addresstext,phonetext,token);
 
                 FirebaseUser currentUser=firebaseAuth.getCurrentUser();
                 databaseReference.child(currentUser.getUid()).setValue(user);
