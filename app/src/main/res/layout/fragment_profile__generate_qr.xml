@@ -6,6 +6,15 @@
     tools:context=".Profile_GenerateQR"
     android:orientation="vertical">
 
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter received key"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/keyEditText"
+        android:layout_margin="10dp"/>
+
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -33,7 +42,8 @@
             android:text="Save"
             android:background="@drawable/rounded_button"
             android:layout_margin="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:id="@+id/saveQRButtonID"/>
 
         <Button
             android:layout_width="150dp"
@@ -41,7 +51,8 @@
             android:text="Upload"
             android:background="@drawable/rounded_button"
             android:layout_margin="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:id="@+id/uploadQRButtonID"/>
 
     </LinearLayout>
 

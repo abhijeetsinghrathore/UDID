@@ -116,7 +116,15 @@ public class Profile extends AppCompatActivity
         } else if (id == R.id.GenerateQR) {
             frag=new Profile_GenerateQR();
 
-        }  else if (id == R.id.nav_logount) {
+        }
+
+        else if(id==R.id.ViewQR)
+        {
+            frag=new Profile_ViewQrFragment();
+        }
+
+
+        else if (id == R.id.nav_logount) {
             firebaseAuth.signOut();
             finish();
             Intent i=new Intent(getApplicationContext(),MainActivity.class);
