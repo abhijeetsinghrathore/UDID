@@ -47,6 +47,8 @@ public class UserRegistration_FillDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration__fill_details);
 
+        this.getSupportActionBar().hide();
+
 
         nextButton=(Button)findViewById(R.id.nextButtonID);
         saveButton=(Button)findViewById(R.id.saveButtonID);

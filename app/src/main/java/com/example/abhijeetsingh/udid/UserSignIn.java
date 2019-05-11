@@ -28,6 +28,7 @@ public class UserSignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_sign_in);
+        this.getSupportActionBar().hide();
 
         email=(EditText)findViewById(R.id.useremail_loginin);
         password=(EditText)findViewById(R.id.userpass_loginin);
@@ -87,8 +88,9 @@ public class UserSignIn extends AppCompatActivity {
         registertext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserSignIn.this,MainActivity.class);
+                Intent i=new Intent(UserSignIn.this,UserRegistration.class);
                 startActivity(i);
+                finish();
 
             }
         });

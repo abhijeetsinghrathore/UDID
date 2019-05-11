@@ -49,6 +49,8 @@ public class UserRegistration_UploadDocuments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration__upload_documents);
 
+        this.getSupportActionBar().hide();
+
 
         nextButton=(Button)findViewById(R.id.nextButtonID);
         saveButton=(Button)findViewById(R.id.saveButtonID);

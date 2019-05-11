@@ -28,6 +28,8 @@ public class OfficialSignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_official_sign_in);
 
+        this.getSupportActionBar().hide();
+
         officialemail=(EditText)findViewById(R.id.officialemail_loginin);
         officialpassword=(EditText)findViewById(R.id.officialpass_loginin);
         officialsignInButton=(Button)findViewById(R.id.officialsigninbutton);

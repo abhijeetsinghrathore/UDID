@@ -32,6 +32,8 @@ public class UserRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
 
+        this.getSupportActionBar().hide();
+
 
         emailtext=(EditText)findViewById(R.id.useremail);
         passText=(EditText)findViewById(R.id.userpass);
@@ -111,6 +113,7 @@ public class UserRegistration extends AppCompatActivity {
 
                 Intent i=new Intent(UserRegistration.this,UserSignIn.class);
                 startActivity(i);
+                finish();
 
             }
         });

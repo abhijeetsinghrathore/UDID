@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,27 +13,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="USER REGISTRATION"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:textSize="25sp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"/>
 
-    <EditText
+
+
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter email"
-        android:layout_margin="10dp"
-        android:id="@+id/useremail"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="enter password"
-        android:layout_margin="10dp"
-        android:id="@+id/userpass"/>
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        card_view:cardCornerRadius="20dp"
+        app:cardElevation="30dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="enter email"
+                android:layout_margin="10dp"
+                android:id="@+id/useremail"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="enter password"
+                android:layout_margin="10dp"
+                android:id="@+id/userpass"/>
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="register"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="20dp"
         android:id="@+id/registerbutton"
         android:background="@drawable/rounded_button"/>
@@ -42,7 +73,8 @@
         android:layout_height="wrap_content"
         android:text="Sign in"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/signintext"/>
+        android:id="@+id/signintext"
+        android:textSize="15sp"/>
 
 
 </LinearLayout>
