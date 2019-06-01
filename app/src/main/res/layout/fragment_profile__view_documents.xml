@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile_ViewDocumentsFragment"
@@ -12,38 +14,86 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Profile Image"
-            android:textSize="15sp"
-            android:layout_margin="10dp"/>
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/ProfileImageID"/>
+            android:layout_margin="30dp"
+            card_view:cardCornerRadius="20dp"
+            app:cardElevation="30dp"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Profile Image"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorAccent"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/ProfileImageID"/>
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Certificate"
-            android:textSize="15sp"
-            android:layout_margin="10dp"/>
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@color/colorAccent"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/CertificateImageID"/>
+            android:layout_margin="30dp"
+            card_view:cardCornerRadius="20dp"
+            app:cardElevation="30dp"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Certificate"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/CertificateImageID"/>
+
+
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
 
 
 
